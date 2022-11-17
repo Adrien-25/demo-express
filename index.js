@@ -9,4 +9,4 @@ app.get("/",(requete, response)=> {
 
 app.listen(port, () => {
     console.log(`Le serveur est démarré sur http://localhost:${port}`);
-})
+});
