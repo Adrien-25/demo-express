@@ -6,11 +6,17 @@ const app = express();
 
 app.use(express.static(path.join(__dirname, './phantom')));
 
+app.set('view engine', 'ejs');
+app.set('views',path.join(__dirname,'./views'));
+
 app.get("/",(requete, response)=> {
-    response.sendFile(path.join(__dirname, './phantom/index.html'));
+    response.render('pages/generic',{pageTitle: "Bienvenue sur la boîte à musique"});
+});
+app.get("/catalogue",(requete, response)=> {
+    response.render('pages/catalogue',{pageTitle: "Voici le catalogue"});
 });
 app.get("/apropos",(requete, response)=> {
-    response.sendFile(path.join(__dirname, './phantom/generic.html'));
+    response.render('pages/generic',{pageTitle: "A propos de la boite à musique"});
 });
 
 app.listen(port, () => {
